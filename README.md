@@ -1,4 +1,4 @@
-# postgress-backup-tool
+# Postgres-backup-tool
 
 This Docker container is created to facilitate the process of backing up and restoring a PostgreSQL database.
 It automatically connects to your PostgreSQL database, dumps the entire database, and uploads it to an S3 bucket.
