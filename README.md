@@ -96,6 +96,6 @@ docker run --rm \
 --env POSTGRES_USER_NAME=postgres user \
 --env POSTGRES_DB_NAME=postgres database \
 --env POSTGRES_DB_PASSWORD=postgres passwrod \
---env DB_RESTORE_NAME=file name to dump database to \
+--env DB_RESTORE_NAME=backup file name in s3 bucket \
 ahmad7899/postgres-backup-restore-tool:latest restore
 ```
