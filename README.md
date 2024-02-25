@@ -73,7 +73,7 @@ ahmad7899/postgres-backup-restore-tool:latest backup
 - `POSTGRES_HOST` - Hostname or IP address of the PostgreSQL server(it can be local or remote host).
 - `POSTGRES_PORT` - Port number for PostgreSQL connections. default is 5432
 - `POSTGRES_USER_NAME` - Username for PostgreSQL authentication.
-- `POSTGRES_DB_NAME` - Name of the PostgreSQL database you want to restore the database to preferd to create new database.
+- `POSTGRES_DB_NAME` - Name of the PostgreSQL database you want to restore the database to, preferd to create new database.
 - `POSTGRES_DB_PASSWORD` - Password for PostgreSQL authentication
 - `DB_RESTORE_NAME` - Name for DB backup file in s3 bucket
 
