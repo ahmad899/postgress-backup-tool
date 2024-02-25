@@ -50,10 +50,12 @@ docker run --env.... ahmad7899/postgres-backup-restore-tool:latest restore
 ## Example
 ```shell
 docker run --rm  \
+###################################################################################
 #optional
 --network="example" \ # if you want to append it to existing network
 #optional
 --add-host=host.docker.internal:host-gateway \ # if you want to access host network 
+###################################################################################
 --env AWS_ACCESS_KEY=access-Key \
 --env AWS_SECRET_KEY=secret-key \
 --env AWS_BUCKET_NAME=bucket-name \
@@ -80,10 +82,12 @@ ahmad7899/postgres-backup-restore-tool:latest backup
 ## Example
 ```shell
 docker run --rm \
+###################################################################################
 #optional
 --network="example" \ # if you want to append it to existing network
 #optional
 --add-host=host.docker.internal:host-gateway \ # if you want to access host network 
+###################################################################################
 --env AWS_ACCESS_KEY=access-Key \
 --env AWS_SECRET_KEY=secret-key \
 --env AWS_BUCKET_NAME=bucket-name \
