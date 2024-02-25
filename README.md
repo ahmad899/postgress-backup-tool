@@ -69,7 +69,7 @@ ahmad7899/postgres-backup-restore-tool:latest backup
 ## Restore database env
 - `AWS_ACCESS_KEY` - Access key for AWS s3 bucket.
 - `AWS_SECRET_KEY` - Secret key paired with the access key.
-- `AWS_BUCKET_NAME` - Name of the S3 bucket for storing backups
+- `AWS_BUCKET_NAME` - Name of the S3 bucket for restoring backups
 - `POSTGRES_HOST` - Hostname or IP address of the PostgreSQL server(it can be local or remote host).
 - `POSTGRES_PORT` - Port number for PostgreSQL connections. default is 5432
 - `POSTGRES_USER_NAME` - Username for PostgreSQL authentication.
