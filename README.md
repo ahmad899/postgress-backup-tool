@@ -34,6 +34,12 @@ Example of restore proccess
 docker run --env.... ahmad7899/postgres-backup-restore-tool:latest restore
 ```
 
+Example of getting shell
+
+```shell
+docker run --env.... ahmad7899/postgres-backup-restore-tool:latest sh
+```
+
 #### Environment Variables
 
 ## Backup database env
