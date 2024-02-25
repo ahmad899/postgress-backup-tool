@@ -16,31 +16,8 @@ mkdir -p /home/$(whoami)/DB_RESTORE
 S3CMD_CONFIG=/home/$(whoami)/.s3cfg
 DATABASE_BACKUP_FOLDER=/home/$(whoami)/DB_BACKUP
 DATABASE_RESTORE_FOLDER=/home/$(whoami)/DB_RESTORE
-DATABASE_BACKUP_FILE=`date +"%Y%m%d%H%M"_vulcan.pgsql`
+DATABASE_BACKUP_FILE="${BACKUP_FILE_NAME}_$(date +"%Y%m%d%H%M").pgsql"
 
-#check if env vars is set 
-if [[ -n "$AWS_ACCESS_KEY" && \
-      -n "$AWS_SECRET_KEY" && \
-      -n "$AWS_BUCKET_NAME" && \
-      -n "$POSTGRES_HOST" && \
-      -n "$POSTGRES_PORT" && \
-      -n "$POSTGRES_USER_NAME" && \
-      -n "$POSTGRES_DB_NAME" && \
-      -n "$POSTGRES_DB_PASSWORD" ]]; then
-    echo "All env are set and ready to be used"
-else
-    echo "You need to set AWS env variables and postgres env variables
-    make sure the follwoing env is set:
-        AWS_ACCESS_KEY
-        AWS_SECRET_KEY
-        AWS_BUCKET_NAME
-        POSTGRES_HOST
-        POSTGRES_PORT
-        POSTGRES_USER_NAME
-        POSTGRES_DB_NAME
-        POSTGRES_DB_PASSWORD"
-    exit 1
-fi
 
 #check the connection with the database
 if pg_isready -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER_NAME" -d "$POSTGRES_DB_NAME" > /dev/null 2>&1; then
@@ -57,9 +34,9 @@ echo "secret_key=${AWS_SECRET_KEY}" >> "$S3CMD_CONFIG"
 
 function backupDBtoS3() {
     echo "dumping database into file ..........."
-    PGPASSWORD="$POSTGRES_DB_PASSWORD" pg_dump -U "${POSTGRES_USER_NAME}" -h "${POSTGRES_HOST}" -p "${POSTGRES_PORT}" "${POSTGRES_DB_NAME}" -O > $DATABASE_BACKUP_FOLDER/$DATABASE_DESTINATION_FILE
+    PGPASSWORD="$POSTGRES_DB_PASSWORD" pg_dump -U "${POSTGRES_USER_NAME}" -h "${POSTGRES_HOST}" -p "${POSTGRES_PORT}" "${POSTGRES_DB_NAME}" -O > $DATABASE_BACKUP_FOLDER/$DATABASE_BACKUP_FILE
     echo "upload database file to s3 bucket"
-    s3cmd put $DATABASE_BACKUP_FOLDER/$DATABASE_DESTINATION_FILE s3://$AWS_BUCKET_NAME
+    s3cmd put $DATABASE_BACKUP_FOLDER/$DATABASE_BACKUP_FILE s3://$AWS_BUCKET_NAME
     echo "Database backuped successfully"
 }
 
