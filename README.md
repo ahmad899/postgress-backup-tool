@@ -19,7 +19,7 @@ List the different parameters available to your container
 you need to set the env var's before runnging any command
 
 ```shell
-docker run ahmad7899/postgres-backup-restore-tool:latest help
+docker run --env.... ahmad7899/postgres-backup-restore-tool:latest help
 ```
 
 Example of backup proccess
